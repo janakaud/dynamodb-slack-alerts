@@ -1,0 +1,147 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "231220a3-ea84-4307-a58d-8fe4e88dd766": {
+        "id": "231220a3-ea84-4307-a58d-8fe4e88dd766",
+        "parent": null,
+        "name": "dynamodb-stream-slack-alerts.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "dynamodb-stream-slack-alerts.js",
+        "cursor": {
+          "lineNumber": 18,
+          "column": 53
+        },
+        "config": {
+          "runtime": "nodejs10.x",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": [],
+          "name": "DynamoDB-Stream-Slack-Alerts",
+          "description": "Issues Slack alerts for DynamoDB entries via Stream events"
+        },
+        "triggers": [
+          {
+            "resourceName": "ddbhirutest",
+            "config": {
+              "StartingPosition": "TRIM_HORIZON",
+              "BatchSize": "100"
+            }
+          }
+        ],
+        "testCases": {
+          "d67e8084-de20-40f0-ad00-3a6c0007ea96": {
+            "id": "d67e8084-de20-40f0-ad00-3a6c0007ea96",
+            "name": "t",
+            "functionId": "231220a3-ea84-4307-a58d-8fe4e88dd766",
+            "event": "{\r\n    \"Records\": [\r\n        {\r\n            \"dynamodb\": {\r\n                \"NewImage\": {\r\n                    \"user_id\": {\r\n                        \"S\": \"janakaud\"\r\n                    },\r\n                    \"recordTime\": {\r\n                        \"N\": \"1586284339180\"\r\n                    },\r\n                    \"meta_data\": {\r\n                        \"S\": \"{\\\"duration\\\":100,\\\"error\\\":\\\"boo\\\"}\"\r\n                    },\r\n                    \"sub_action\": {\r\n                        \"S\": \"failed\"\r\n                    },\r\n                    \"action\": {\r\n                        \"S\": \"build\"\r\n                    }\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"dynamodb\": {\r\n                \"NewImage\": {\r\n                    \"user_id\": {\r\n                        \"S\": \"janakaud\"\r\n                    },\r\n                    \"recordTime\": {\r\n                        \"N\": \"1586284339080\"\r\n                    },\r\n                    \"meta_data\": {\r\n                        \"S\": \"{}\"\r\n                    },\r\n                    \"sub_action\": {\r\n                        \"S\": \"started\"\r\n                    },\r\n                    \"action\": {\r\n                        \"S\": \"build\"\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    ]\r\n}",
+            "eventTemplate": "dynamodb-update-json"
+          }
+        }
+      }
+    },
+    "openFiles": [
+      "231220a3-ea84-4307-a58d-8fe4e88dd766"
+    ],
+    "currentFileId": "231220a3-ea84-4307-a58d-8fe4e88dd766",
+    "resources": {
+      "ddbhirutest": {
+        "name": "ddbhirutest",
+        "type": "DynamoDB",
+        "config": {
+          "mode": 1,
+          "table": {
+            "arn": "arn:aws:dynamodb:us-east-1:318300609668:table/hirutest",
+            "name": "hirutest",
+            "partitionKey": "price",
+            "partitionKeyType": "S",
+            "hasSortKey": true,
+            "sortKey": "colour",
+            "sortKeyType": "S",
+            "payPerRequest": true,
+            "mode": 1,
+            "streamArn": "arn:aws:dynamodb:us-east-1:318300609668:table/hirutest/stream/2020-01-02T08:32:20.233"
+          }
+        }
+      }
+    },
+    "customTemplate": {
+      "syntax": "JSON",
+      "overrideDefault": false,
+      "dialect": "CloudFormation",
+      "definitions": null
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "SLACK_WEBHOOK_URL",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "SLACK_CHANNEL",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "SLACK_USER",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "SLACK_ICON",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "axios": {
+          "name": "axios",
+          "language": "nodejs",
+          "version": "0.19.0"
+        }
+      }
+    }
+  },
+  "PROJECT_META": {
+    "sigmaVersion": "1.4.1",
+    "projectName": "dynamodb-slack-alerts",
+    "projectDescription": "Slack alerts from DynamoDB streams etc.",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "language": "nodejs",
+    "platformRegions": {},
+    "lastSave": 1593960974735
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "dynamodb-slack-alerts",
+      "url": "https://github.com/janakaud/dynamodb-slack-alerts"
+    }
+  }
+}
